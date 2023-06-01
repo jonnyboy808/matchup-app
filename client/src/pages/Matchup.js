@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getAllTech, createMatchup } from '../utils/api';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getAllTech, createMatchup } from "../utils/api";
 
 // Uncomment import statements below after building queries and mutations
-// import { useMutation, useQuery } from '@apollo/client';
-// import { QUERY_TECH } from '../utils/queries';
-// import { CREATE_MATCHUP } from '../utils/mutations';
+import { useMutation, useQuery } from "@apollo/client";
+import { QUERY_TECH } from "../utils/queries";
+import { CREATE_MATCHUP } from "../utils/mutations";
 
 const Matchup = () => {
   const [techList, setTechList] = useState([]);
   const [formData, setFormData] = useState({
-    tech1: 'JavaScript',
-    tech2: 'JavaScript',
+    tech1: "JavaScript",
+    tech2: "JavaScript",
   });
   let navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const Matchup = () => {
       try {
         const res = await getAllTech();
         if (!res.ok) {
-          throw new Error('No list of technologies');
+          throw new Error("No list of technologies");
         }
         const techList = await res.json();
         setTechList(techList);
@@ -43,7 +43,7 @@ const Matchup = () => {
       const res = await createMatchup(formData);
 
       if (!res.ok) {
-        throw new Error('something went wrong!');
+        throw new Error("something went wrong!");
       }
 
       const matchup = await res.json();
@@ -54,8 +54,8 @@ const Matchup = () => {
     }
 
     setFormData({
-      tech1: 'JavaScript',
-      tech2: 'JavaScript',
+      tech1: "JavaScript",
+      tech2: "JavaScript",
     });
   };
 

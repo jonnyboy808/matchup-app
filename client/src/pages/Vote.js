@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { getMatchup, createVote } from '../utils/api';
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getMatchup, createVote } from "../utils/api";
 
 // Uncomment import statements below after building queries and mutations
-// import { useQuery, useMutation } from '@apollo/client';
-// import { CREATE_VOTE } from '../utils/mutations';
-// import { QUERY_MATCHUPS } from '../utils/queries';
+import { useQuery, useMutation } from "@apollo/client";
+import { CREATE_VOTE } from "../utils/mutations";
+import { QUERY_MATCHUPS } from "../utils/queries";
 
 const Vote = () => {
   const [matchup, setMatchup] = useState({});
@@ -16,7 +16,7 @@ const Vote = () => {
       try {
         const res = await getMatchup(id);
         if (!res.ok) {
-          throw new Error('No matchup');
+          throw new Error("No matchup");
         }
         const matchup = await res.json();
         setMatchup(matchup);
@@ -32,7 +32,7 @@ const Vote = () => {
       const res = await createVote({ id, techNum });
 
       if (!res.ok) {
-        throw new Error('Could not vote');
+        throw new Error("Could not vote");
       }
 
       const matchup = await res.json();
@@ -57,7 +57,7 @@ const Vote = () => {
         </h3>
         <button className="btn btn-info" onClick={() => handleVote(1)}>
           Vote for {matchup.tech1}
-        </button>{' '}
+        </button>{" "}
         <button className="btn btn-info" onClick={() => handleVote(2)}>
           Vote for {matchup.tech2}
         </button>

@@ -5,8 +5,8 @@ const typeDefs = gql`
     _id: ID
     tech1: String
     tech2: String
-    tech1_votes: Number
-    tech2_votes: Number
+    tech1_votes: Int
+    tech2_votes: Int
   }
 
   type Tech {
@@ -22,7 +22,7 @@ const typeDefs = gql`
 
   type Mutation {
     createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote1(matchupId: ID!, whichTech: Number!): Matchup
+    createVote(_id: ID!, techNum: Int!): Matchup
   }
 `;
 
